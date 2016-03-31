@@ -1,0 +1,6 @@
+build
+htdocs/scripts
+htdocs/data
+htdocs/stylesheets
+htdocs/templates
+logs/*

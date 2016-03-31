@@ -1,0 +1,80 @@
+<project name="WebEngine">
+	<property name="framework.dir" value="framework" />
+	<property name="src.templates" value="${framework.dir}/template" />
+	<property name="build.dir" value="build" />
+	<property name="build.css.dir" value="${build.dir}/raw/stylesheets" />
+	<property name="src.css.dir" value="${framework.dir}/stylesheets" />
+	<property name="src.scripts.dir" value="${framework.dir}/scripts" />
+	<property name="scripts.dir" value="scripts" />
+	<property name="templatesDir" value="${build.dir}/templates" />
+	<property name="dataDir" value="${build.dir}/data" />
+	<property name="website" value="/Users/raymondschan/projects/kathrynandraymond.github.io" />
+
+	<target name="-clean-build-directory">
+		<delete>
+			<fileset dir="${build.dir}/stylesheets" includes="**" />
+			<fileset dir="${build.dir}/scripts" includes="*.js" />
+			<fileset dir="${build.dir}/templates" includes="**/*.html" />
+			<fileset dir="${build.dir}/data" includes="**/*.json" />
+		</delete>
+	</target>
+
+	<!-- Creates a "css/project.css" file -->
+	<target name="-concatenate-convert-less-files">
+		<concat encoding="UTF-8" destfile="${build.css.dir}/main.less">
+			<fileset dir="${src.css.dir}/thirdparty" />
+			<fileset dir="${src.css.dir}" includes="**/*.less" excludes="thirdparty/*" />
+			<fileset dir="${src.css.dir}" includes="**/*.css" />
+		</concat>
+		<exec executable="lessc">
+		    <arg value="${build.css.dir}/main.less"/>
+		    <arg value="${build.dir}/stylesheets/project.css"/>
+		</exec>
+		<delete dir="${build.dir}/raw" />
+	</target>
+
+	<!-- Creates a "scripts/project.js" file -->
+	<target name="-concatenate-script-files">
+		<concat encoding="UTF-8" destfile="${build.dir}/scripts/project.js">
+			<fileset dir="${src.scripts.dir}/thirdparty" includes="**/*.js"/>
+			<fileset dir="${src.scripts.dir}/Wedding/constants" includes="**/*.js" />
+			<fileset dir="${src.scripts.dir}/Wedding/widgets" includes="**/*.js" />
+			<fileset dir="${src.scripts.dir}/Wedding/modules" includes="**/*.js" />
+			<fileset dir="${src.scripts.dir}" includes="main.js" />
+		</concat>
+	</target>
+
+	<!-- Creates "templates/*.html" files -->
+	<!-- Creates "data/**/*.json" files -->
+	<target name="-copy-template-files">
+		<copy todir="${templatesDir}" >  
+		    <fileset dir="${src.templates}" includes="**" />
+		</copy>
+		<copy todir="${dataDir}">
+			<fileset dir="${framework.dir}/data" includes="**" />
+		</copy>
+	</target>
+
+	<target name="-copy-to-website">
+		<copy todir="${website}" >
+		    <fileset dir="${build.dir}" includes="**" />
+		</copy>
+		<copy todir="${website}/img" >
+		    <fileset dir="htdocs/img" includes="**" />
+		</copy>
+		<copy todir="${website}" >
+		    <fileset dir="htdocs" includes="index.html" />
+		</copy>
+	</target>
+
+	<target name="clean">
+		<antcall target="-clean-build-directory" />
+	</target>
+
+	<target name="build-dependencies">
+		<antcall target="-concatenate-convert-less-files" />
+		<antcall target="-concatenate-script-files" />
+		<antcall target="-copy-template-files" />
+		<antcall target="-copy-to-website" />
+	</target>
+</project>
