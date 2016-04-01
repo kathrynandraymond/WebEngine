@@ -1,0 +1,4 @@
+
+project.bin=/Users/rchan/projects
+WebEngine.bin=${project.bin}/WebEngine
+Wedding.Document.Root=${project.bin}/kathrynandraymond.github.io

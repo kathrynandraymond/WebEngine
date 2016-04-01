@@ -1,4 +1,5 @@
 <project name="WebEngine">
+	<property file="properties/web.properties" />
 	<property name="framework.dir" value="framework" />
 	<property name="src.templates" value="${framework.dir}/template" />
 	<property name="build.dir" value="build" />
@@ -8,7 +9,6 @@
 	<property name="scripts.dir" value="scripts" />
 	<property name="templatesDir" value="${build.dir}/templates" />
 	<property name="dataDir" value="${build.dir}/data" />
-	<property name="website" value="/Users/raymondschan/projects/kathrynandraymond.github.io" />
 
 	<target name="-clean-build-directory">
 		<delete>
@@ -56,13 +56,13 @@
 	</target>
 
 	<target name="-copy-to-website">
-		<copy todir="${website}" >
+		<copy todir="${Wedding.Document.Root}" >
 		    <fileset dir="${build.dir}" includes="**" />
 		</copy>
-		<copy todir="${website}/img" >
+		<copy todir="${Wedding.Document.Root}/img" >
 		    <fileset dir="htdocs/img" includes="**" />
 		</copy>
-		<copy todir="${website}" >
+		<copy todir="${Wedding.Document.Root}" >
 		    <fileset dir="htdocs" includes="index.html" />
 		</copy>
 	</target>
@@ -75,6 +75,11 @@
 		<antcall target="-concatenate-convert-less-files" />
 		<antcall target="-concatenate-script-files" />
 		<antcall target="-copy-template-files" />
+	</target>
+
+	<target name="release">
+		<antcall target="clean" />
+		<antcall target="build-dependencies" />
 		<antcall target="-copy-to-website" />
 	</target>
 </project>
