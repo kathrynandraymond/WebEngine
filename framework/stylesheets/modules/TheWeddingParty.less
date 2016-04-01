@@ -1,0 +1,36 @@
+div[package='Wedding.modules'].TheWeddingParty {
+	.gallery {
+		.person {
+		
+		}
+		.person[enlarged='false'] {
+			float: left;
+			.photo.thumbnail {
+				display: block;
+				width: 100px;
+				height: 150px;
+			}
+			.photo.enlarged {
+				display: none;
+			}
+			.about {
+				display: none;
+			}
+		
+		}
+		.person[enlarged='true'] {
+			.photo.thumbnail {
+				display: none;
+			}
+			.photo.enlarged {
+				display: block;
+			}
+			.about {
+				display: block;
+			}
+		}
+	}
+	.cannotSeeThis {
+		display: none;
+	}
+}

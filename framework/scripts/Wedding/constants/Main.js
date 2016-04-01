@@ -8,5 +8,11 @@ Wedding.constants.Main = {
 		'img/his_hers_original_scale.jpg',
 		'img/kathryn_and_me_bigsur.jpg',
 		'img/rocky_mountain_natl_park.jpg'
-	]
+	],
+
+	DATA: {
+		PEOPLE: {
+			SRC: 'data/people/'
+		}
+	}
 };
