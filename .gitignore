@@ -4,3 +4,4 @@ htdocs/data
 htdocs/stylesheets
 htdocs/templates
 logs/*
+properties/web.properties
