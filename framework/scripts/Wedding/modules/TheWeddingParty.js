@@ -4,48 +4,60 @@ Wedding.modules = Wedding.modules || {};
 Wedding.modules.TheWeddingParty = function() {
 	var that = this;
 
-	var names = ['Christy Ng', 'Eli Martin Lara', 'Rebecca Reh', 'Elbert Chan', 'Eva Lee', 'Chung Yeoh'];
+	var people = data.people;
 
 	this.init = function(parentElement) {
 		var gallery = $(parentElement).find('.gallery');
-		var people = [];
-
-		for(var i = 0, len = names.length;  i < len; i++) {
-			people[i] = {
-				name: names[i]
-			};
+		var template = $(parentElement).find('.cannotSeeThis .person');
+		for(var i = 0, len = people.length; i < len; i++) {
 			(function(person) {
-				var nameArr = person.name.split(' ');
-				var jsonFile = '';
-				for(var i = 0, len = nameArr.length; i < len; i++) {
-					if(i == 0) {
-						jsonFile = nameArr[i].toLowerCase();
-					} else {
-						jsonFile += nameArr[i].charAt(0).toUpperCase() + nameArr[i].slice(1).toLowerCase();
-					}
+				var personInst = $(template).clone();
+				if(Math.floor(Math.random() * people.length) % 2 == 0) {
+					$(personInst).appendTo(gallery);
+				} else {
+					$(personInst).prependTo(gallery);
 				}
-				person.jsonFile = Wedding.constants.Main.DATA.PEOPLE.SRC + jsonFile + '.json';
-				$.ajax({
-					url: person.jsonFile,
-					method: 'GET'
-				}).done(function(model) {
-					person.model = model;
-					addPersonToGallery(person);
-				});
+				$(personInst).find('.name').html(person.name);
+				$(personInst).find('.role').html(person.type);
+				$(personInst).find('.about').html(person.about);
+				if(person.hasOwnProperty('thumbnails') && person.thumbnails.length > 0) {
+					$(personInst).find('.photo.thumbnail').removeClass('not-available');
+					var thumbnail = 'img/people/thumbnails/' + person.thumbnails[person.thumbnails.length == 1 ?
+							0 : Math.floor(Math.random() * person.thumbnails.length)];
+					var img = $('<img/>');
+					$(img).appendTo($(personInst).find('.photo.thumbnail'));
+					$(img).attr('src',thumbnail);
+				} else {
+					$(personInst).find('.photo.thumbnail').addClass('not-available');
+				}
 			})(people[i]);
 		}
-	};
 
-	var addPersonToGallery = function(person) {
-		var element = $('.cannotSeeThis .person').clone();
-		$(element).appendTo('.gallery');
-		$(element).find('.name').html(person.name);
-		$(element).find('.about').html(person.model.about);
-		$(element).find('.role').html(person.model.type);
-		if(person.model.imgs.length > 0) {
-			$(element).find('.photo.thumbnail').css('background-image','url(\'img/people/' +
-					person.model.imgs[0]+ '\')');
-		}
+		$(gallery).click(function(event) {
+			var focusedPerson = $(event.target).parent('div.person');
+
+			if(focusedPerson != null && focusedPerson.length > 0) {
+				var name = $(focusedPerson).find('.name').html();
+
+				emptyModal();
+
+				var enlargedPerson = $(focusedPerson).clone();
+				loadIntoModal($(enlargedPerson).clone());
+
+				$(enlargedPerson).attr('enlarged','true');
+				var portrait = $('<img/>');
+				$(portrait).appendTo($(enlargedPerson).find('.photo.enlarged'));
+				for(var j = 0, len_j = people.length; j < len_j; j++) {
+					if(people[j].hasOwnProperty('name') && people[j].name == name) {
+						if(people[j].hasOwnProperty('imgs') && people[j].imgs.length > 0) {
+							var pic = people[j].imgs[people[j].imgs.length == 1 ? 0 :
+								Math.floor(Math.random() * people[j].imgs.length)];
+							$(portrait).attr('src','img/people/' + pic);
+						}
+					}
+				}
+			}
+		});
 	};
 };
 

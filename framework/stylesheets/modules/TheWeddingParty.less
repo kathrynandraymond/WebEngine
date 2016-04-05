@@ -6,9 +6,16 @@ div[package='Wedding.modules'].TheWeddingParty {
 		.person[enlarged='false'] {
 			float: left;
 			.photo.thumbnail {
-				display: block;
-				width: 100px;
-				height: 150px;
+				width: 200px;
+				height: 200px;
+			}
+			.photo.thumbnail.not-available {
+				background-image: url('http://www.solarworlds.co.uk/photo/photos/20080222_PurpleOrchids_700x700med.jpg');
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+			.photo.thumbnail img {
+
 			}
 			.photo.enlarged {
 				display: none;
@@ -16,7 +23,11 @@ div[package='Wedding.modules'].TheWeddingParty {
 			.about {
 				display: none;
 			}
-		
+			margin: 5px;
+			background-color: @theme-color;
+			.rounded(5px);
+			padding: 3px;
+			color: white;
 		}
 		.person[enlarged='true'] {
 			.photo.thumbnail {

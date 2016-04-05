@@ -8,7 +8,7 @@
 	<property name="src.scripts.dir" value="${framework.dir}/scripts" />
 	<property name="scripts.dir" value="scripts" />
 	<property name="templatesDir" value="${build.dir}/templates" />
-	<property name="dataDir" value="${build.dir}/data" />
+	<property name="build.dataDir" value="${build.dir}/data" />
 
 	<target name="-clean-build-directory">
 		<delete>
@@ -35,23 +35,27 @@
 
 	<!-- Creates a "scripts/project.js" file -->
 	<target name="-concatenate-script-files">
+		<concat encoding="UTF-8" destfile="${build.dataDir}/people.js">
+			<fileset dir="${framework.dir}/data" includes="people.js" />
+			<fileset dir="${framework.dir}/data/people" includes="*.js" />
+		</concat>
+
 		<concat encoding="UTF-8" destfile="${build.dir}/scripts/project.js">
 			<fileset dir="${src.scripts.dir}/thirdparty" includes="**/*.js"/>
+			<fileset dir="${build.dataDir}" includes="people.js" />
 			<fileset dir="${src.scripts.dir}/Wedding/constants" includes="**/*.js" />
 			<fileset dir="${src.scripts.dir}/Wedding/widgets" includes="**/*.js" />
 			<fileset dir="${src.scripts.dir}/Wedding/modules" includes="**/*.js" />
 			<fileset dir="${src.scripts.dir}" includes="main.js" />
 		</concat>
+
+		<delete file="${build.dataDir}/people.js" />
 	</target>
 
 	<!-- Creates "templates/*.html" files -->
-	<!-- Creates "data/**/*.json" files -->
 	<target name="-copy-template-files">
 		<copy todir="${templatesDir}" >  
 		    <fileset dir="${src.templates}" includes="**" />
-		</copy>
-		<copy todir="${dataDir}">
-			<fileset dir="${framework.dir}/data" includes="**" />
 		</copy>
 	</target>
 
