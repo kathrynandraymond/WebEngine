@@ -38,27 +38,55 @@ div[package='Wedding.modules'].TheWeddingParty {
 }
 
 .pageModal {
-	.container {
-		.person {
-			.photo {
-				float: left;
-				min-width: 50px;
-				min-height: 50px;
-				max-width: 600px;
-				max-height: 500px;
-				img.show {
-					display: inline;
+	.containing-box {
+		background-color: white;
+		.rounded(10px);
+		.container {
+			width: auto;
+			height: auto;
+			margin: 0 auto;
+			.person {
+				max-width: 900px;
+				height: auto;
+				.photo {
+					float: left;
+					min-width: 200px;
+					min-height: 200px;
+					max-width: 500px;
+					max-height: 500px;
+					img.show {
+						display: inline;
+					}
+				}
+	
+				.info {
+					float: left;
+					width: 400px;
+					height: 100%;
+					div {
+						margin: 5px;
+					}
+					.name {
+						width: 100%;
+						color: @theme-color;
+						font-size: 18px;
+					}
+					.role {
+						color: @theme-color;
+						font-size: 14px;
+					}
+					.about {
+						width: 100%;
+						margin: 10px;
+						max-width: 480px;
+						font-size: 14px;
+					}
 				}
 			}
-
-			.info {
-				float: left;
-				color: white;
-				.name {
-	
-				}
-				.about {
-				}
+			.person:after {
+				content: " "; 
+			    display: block;
+			    clear: both;
 			}
 		}
 	}
