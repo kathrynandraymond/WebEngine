@@ -20,34 +20,8 @@ var objectInitializer = function(parentElement) {
 	}
 };
 
-var emptyModal = function() {
-	var modalContainer = $('.pageModal container');
-	$(modalContainer).empty();
-};
-
-var loadIntoModal = function(content, automaticallyShow) {
-	var modalContainer = $('.pageModal container');
-	$(content).appendTo(modalContainer);
-	if(automaticallyShow === true) {
-		showModal();
-	}
-};
-
-var showModal = function() {
-	var modal = $('.pageModal').addClass('show');
-};
-
-var hideModal = function() {
-	var modal = $('.pageModal').removeClass('show');
-};
-
 $(document).ready(function() {
 	// Load modules and widgets
 	objectInitializer($('body'));
-
-	$('.pageModal').find('exit').bind('click', function(event) {
-		hideModal();
-		emptyModal();
-	});
 });
 

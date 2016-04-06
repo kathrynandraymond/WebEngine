@@ -42,6 +42,7 @@
 
 		<concat encoding="UTF-8" destfile="${build.dir}/scripts/project.js">
 			<fileset dir="${src.scripts.dir}/thirdparty" includes="**/*.js"/>
+			<fileset dir="${src.scripts.dir}/miscellaneous" includes="**/*.js"/>
 			<fileset dir="${build.dataDir}" includes="people.js" />
 			<fileset dir="${src.scripts.dir}/Wedding/constants" includes="**/*.js" />
 			<fileset dir="${src.scripts.dir}/Wedding/widgets" includes="**/*.js" />

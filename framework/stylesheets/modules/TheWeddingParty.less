@@ -1,24 +1,15 @@
 div[package='Wedding.modules'].TheWeddingParty {
 	.gallery {
 		.person {
-		
-		}
-		.person[enlarged='false'] {
+			cursor: pointer;
 			float: left;
-			.photo.thumbnail {
+
+			.photo {
 				width: 200px;
 				height: 200px;
-			}
-			.photo.thumbnail.not-available {
-				background-image: url('http://www.solarworlds.co.uk/photo/photos/20080222_PurpleOrchids_700x700med.jpg');
-				background-repeat: no-repeat;
-				background-size: cover;
-			}
-			.photo.thumbnail img {
-
-			}
-			.photo.enlarged {
-				display: none;
+				img {
+					display: none;
+				}
 			}
 			.about {
 				display: none;
@@ -29,19 +20,46 @@ div[package='Wedding.modules'].TheWeddingParty {
 			padding: 3px;
 			color: white;
 		}
-		.person[enlarged='true'] {
-			.photo.thumbnail {
-				display: none;
-			}
-			.photo.enlarged {
-				display: block;
-			}
-			.about {
-				display: block;
-			}
-		}
 	}
 	.cannotSeeThis {
 		display: none;
+	}
+}
+
+.person {
+	.photo {
+		background-image: url('http://www.solarworlds.co.uk/photo/photos/20080222_PurpleOrchids_700x700med.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		img {
+			display: none;
+		}
+	}
+}
+
+.pageModal {
+	.container {
+		.person {
+			.photo {
+				float: left;
+				min-width: 50px;
+				min-height: 50px;
+				max-width: 600px;
+				max-height: 500px;
+				img.show {
+					display: inline;
+				}
+			}
+
+			.info {
+				float: left;
+				color: white;
+				.name {
+	
+				}
+				.about {
+				}
+			}
+		}
 	}
 }
