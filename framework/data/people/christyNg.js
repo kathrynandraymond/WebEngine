@@ -2,7 +2,7 @@ data.people.push({
 	"name": "Christy Ng",
 	"type":"Maid of Honor",
 	"imgs":[
-		"christyNg_01.jpg",
+		"christyNg_01.png",
 		"christyNg_02.png",
 		"christyNg_03.png"
 	],

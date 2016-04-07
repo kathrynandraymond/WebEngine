@@ -1,3 +1,4 @@
+var initializedObjects = {};
 
 var objectInitializer = function(parentElement) {
 	var wrappers = $(parentElement).find('[package]');
@@ -16,6 +17,7 @@ var objectInitializer = function(parentElement) {
 					instance.init(wrapper);
 				});
 			})(wrappers[i], instance, packageClass);
+			initializedObjects[packageClass] = instance;
 		}
 	}
 };

@@ -3,15 +3,15 @@ var PageModal = function() {
 
 	var that = this;
 
-	var wrapper = $('.pageModal');
+	var wrapper = $('.pageModal.overlay');
 
 	this.emptyModal = function() {
-		var modalContainer = $(wrapper).find('.container');
+		var modalContainer = $('.pageModal.containing-box').find('.container');
 		$(modalContainer).empty();
 	};
 	
 	this.loadIntoModal = function(content, automaticallyShow) {
-		var modalContainer = $(wrapper).find('.container');
+		var modalContainer = $('.pageModal.containing-box').find('.container');
 		$(content).appendTo(modalContainer);
 		if(automaticallyShow === true) {
 			showModal();
@@ -19,19 +19,15 @@ var PageModal = function() {
 	};
 	
 	this.showModal = function() {
-		var modal = $(wrapper).addClass('show');
-		var body = $('body');
-		$(modal).width($(body).width()).height($(body).height());
+		$('.pageModal').addClass('show');
 	};
 	
 	this.hideModal = function() {
-		var modal = $(wrapper).removeClass('show');
-		var body = $('body');
-		$(modal).width(0).height(0);
+		$('.pageModal').removeClass('show');
 	};
 
 	this.init = function() {
-		$(wrapper).find('.exit').click(function(event) {
+		$('.pageModal.containing-box').find('.exit').click(function(event) {
 			that.hideModal();
 			that.emptyModal();
 		});

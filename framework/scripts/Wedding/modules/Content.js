@@ -6,7 +6,6 @@ Wedding.modules.Content = function() {
 	var that = this;
 
 	this.init = function(parentElement) {
-	
 	};
 };
 

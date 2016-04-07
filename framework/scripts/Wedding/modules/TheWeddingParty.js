@@ -34,10 +34,11 @@ Wedding.modules.TheWeddingParty = function() {
 				pageModal.emptyModal();
 				var enlargedPerson = addPersonToTemplate(person, $('.cannotSeeThis .person[enlarged="true"]'));
 				pageModal.loadIntoModal($(enlargedPerson), false);
-				pageModal.showModal();
 
 				var pictureFrame = $(enlargedPerson).find('.photo');
 				var pics = $(pictureFrame).find('img');
+
+				var settleFunc = null;
 				if(pics != null && pics.length > 0) {
 					var img = $(pics[Math.floor(Math.random() * pics.length)]);
 					$(img).addClass('show');
@@ -63,10 +64,11 @@ Wedding.modules.TheWeddingParty = function() {
 								}
 							}
 							$(shownImg).css('width', imgWidth + 'px').css('height', imgHeight + 'px');
-						}, 300);
+						}, 200);
 		
 					})(img, pictureFrame);
 				}
+				pageModal.showModal();
 			}
 		});
 	};
