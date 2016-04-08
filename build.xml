@@ -67,6 +67,9 @@
 		<copy todir="${Wedding.Document.Root}/img" >
 		    <fileset dir="htdocs/img" includes="**" />
 		</copy>
+		<copy todir="${Wedding.Document.Root}/fonts" >
+			<fileset dir="htdocs/fonts" includes="**" />
+		</copy>
 		<copy todir="${Wedding.Document.Root}" >
 		    <fileset dir="htdocs" includes="index.html" />
 		</copy>
