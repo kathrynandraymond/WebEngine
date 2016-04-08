@@ -32,7 +32,7 @@ Wedding.modules.Header = function() {
 	}
 
 	var clickSections = function(event) {
-		var reference = $(event.target).attr(ref);
+		var reference = $(event.target).attr('ref');
 
 		if(reference != null) {
 			var target = $('div[package="Wedding.modules"].Content').find('div[anchor="' + reference + '"]');
