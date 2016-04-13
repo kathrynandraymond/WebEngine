@@ -5,29 +5,32 @@ Wedding.modules.TheWeddingParty = function() {
 	var that = this;
 
 	var people = data.people;
+	var parentElement;
 
 	var findPersonByName = function(name) {
-		for(var i = 0, len = people.length; i < len; i++) {
-			if(people[i].name == name) {
-				return people[i];
+		var i, len;
+		for(i = 0, len = people.bridesmaids.length; i < len; i++) {
+			if(people.bridesmaids[i].name == name) {
+				return people.bridesmaids[i];
+			}
+		}
+		for(i = 0, len = people.groomsmen.length; i < len; i++) {
+			if(people.bridesmaids[i].name == name) {
+				return people.groomsmen[i];
 			}
 		}
 		return null;
 	};
 
-	this.init = function(parentElement) {
-		var gallery = $(parentElement).find('.gallery');
-		var template = $(parentElement).find('.cannotSeeThis .person[enlarged="false"]');
-		for(var i = 0, len = people.length; i < len; i++) {
-			var personInst = addPersonToTemplate(people[i], template);
-			if(Math.floor(Math.random() * 2) == 0) {
-				$(personInst).appendTo(gallery);
-			} else {
-				$(personInst).prependTo(gallery);
-			}
-		}
+	this.init = function(parentWrapper) {
+		parentElement = parentWrapper;
+		var bridesmaidsGallery = $(parentElement).find('.bridesmaids .gallery');
+		var groomsmenGallery = $(parentElement).find('.groomsmen .gallery');
 
-		$(gallery).click(function(event) {
+		loadGroupToGallery(people.bridesmaids, bridesmaidsGallery);
+		loadGroupToGallery(people.groomsmen, groomsmenGallery);
+
+		$('.gallery').click(function(event) {
 			var focusedPerson = $(event.target).parents('div.person');
 			if(focusedPerson != null && focusedPerson.length > 0) {
 				var person = findPersonByName($(focusedPerson).find('.name').html());
@@ -71,6 +74,18 @@ Wedding.modules.TheWeddingParty = function() {
 				pageModal.showModal();
 			}
 		});
+	};
+
+	var loadGroupToGallery = function(group, galleryElement) {
+		var template = $(parentElement).find('.cannotSeeThis .person[enlarged="false"]');
+		for(var i = 0, len = group.length; i < len; i++) {
+			var personInst = addPersonToTemplate(group[i], template);
+			if(Math.floor(Math.random() * 2) == 0) {
+				$(personInst).appendTo(galleryElement);
+			} else {
+				$(personInst).prependTo(galleryElement);
+			}
+		}
 	};
 
 	var addPersonToTemplate = function(person, template) {

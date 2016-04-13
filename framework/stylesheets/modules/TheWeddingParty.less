@@ -1,25 +1,44 @@
 div[package='Wedding.modules'].TheWeddingParty {
-	.gallery {
-		.person {
-			cursor: pointer;
+	.bridesmaids,.groomsmen {
+		.group {
+			font-family: @invitation-font;
+			font-size: 20pt;
+			color: @theme-color;
 			float: left;
-
-			.photo {
-				width: 200px;
-				height: 200px;
-				img {
+			width: 200px;
+		}
+		.gallery {
+			float: left;
+			.person {
+				cursor: pointer;
+				float: left;
+	
+				.photo {
+					width: 200px;
+					height: 200px;
+					img {
+						display: none;
+					}
+				}
+				.role {
 					display: none;
 				}
+				.about {
+					display: none;
+				}
+				margin: 5px;
+				background-color: @theme-color;
+				.rounded(5px);
+				padding: 3px;
+				color: white;
 			}
-			.about {
-				display: none;
-			}
-			margin: 5px;
-			background-color: @theme-color;
-			.rounded(5px);
-			padding: 3px;
-			color: white;
 		}
+		.gallery:after {
+			.clearFloat;
+		}
+	}
+	.bridesmaids:after,.groomsmen:after {
+		.clearFloat;
 	}
 	.cannotSeeThis {
 		display: none;

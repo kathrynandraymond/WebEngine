@@ -1,4 +1,4 @@
-data.people.push({
+data.people.bridesmaids.push({
 	"name": "Christy Ng",
 	"type":"Maid of Honor",
 	"imgs":[

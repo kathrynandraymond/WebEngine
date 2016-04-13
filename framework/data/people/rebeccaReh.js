@@ -1,4 +1,4 @@
-data.people.push({
+data.people.bridesmaids.push({
 	"name": "Rebecca Reh",
 	"type":"Bridesmaid",
 	"thumbnails":[

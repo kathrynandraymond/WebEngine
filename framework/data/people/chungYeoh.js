@@ -1,4 +1,4 @@
-data.people.push({
+data.people.groomsmen.push({
 	"name": "Chung Yeoh",
 	"type":"Groomsman",
 	"thumbnails":[

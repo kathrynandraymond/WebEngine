@@ -1,4 +1,53 @@
 div.Content[package='Wedding.modules'] {
+
+	div.widget {
+		width: 100%;
+		margin: 10px;
+		div[package='Wedding.widgets'].Countdown {
+			font-size: 30px;
+			height: 40px;
+			padding: 0;
+			width: 550px;
+			margin: 0 auto;
+		
+			div {
+				float: left;
+				color: @theme-color;
+			}
+			div.unit {
+				background-color: @theme-color;
+				width: 45px;
+				height: 100%;
+				margin: 0 10px 0 0px;
+				padding: 5px;
+				.rounded(5px);
+				
+				div {
+					text-align: center;
+					width: 100%;
+					color: white;
+				}
+				div:nth-child(1) {
+					font-family: @invitation-font;
+					font-size: 24px;
+				}
+				div:nth-child(2) {
+					.default-body-font;
+					font-size: 8pt;
+				}
+			}
+			> div:last-child {
+				font-size: 20pt;
+				height: 50px;
+			}
+		}
+		margin-bottom: 35px;
+	}
+
+	div.widget:after {
+		.clearFloat;
+	}
+
 	width: 100%;
 
 	div.sections {

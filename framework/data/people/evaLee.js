@@ -1,4 +1,4 @@
-data.people.push({
+data.people.bridesmaids.push({
 	"name": "Eva Lee",
 	"type":"Bridesmaid",
 	"imgs":[

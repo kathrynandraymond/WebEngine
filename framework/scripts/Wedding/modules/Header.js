@@ -11,7 +11,7 @@ Wedding.modules.Header = function() {
 	};
 
 	this.addSections = function(container) {
-		var list = $(that.wrapper).find('ul.sections');
+		var list = $(that.wrapper).find('ul.dynamic');
 		var title = $(container).find('h2');
 		var anchor = 'anchor-' + Math.random();
 		$(container).attr('anchor', anchor);
@@ -28,19 +28,27 @@ Wedding.modules.Header = function() {
 			}
 		}
 
-		$(that.wrapper).find('ul.sections').click(clickSections);
+		$(that.wrapper).find('div.sections ul').click(clickSections);
 	}
 
 	var clickSections = function(event) {
-		var reference = $(event.target).attr('ref');
+		var scrollTo = function(target) {
+			$('html,body').animate({
+				 scrollTop: $(target).offset().top - $('.Header').height()
+			});
+		};
 
-		if(reference != null) {
-			var target = $('div[package="Wedding.modules"].Content').find('div[anchor="' + reference + '"]');
+		if($(event.target).html() == "Home") {
+			scrollTo($('.website'));
+		} else {
+			var reference = $(event.target).attr('ref');
 	
-			if(target != null) {
-				$('html,body').animate({
-					 scrollTop: $(target).offset().top
-				});
+			if(reference != null) {
+				var target = $('div[package="Wedding.modules"].Content').find('div[anchor="' + reference + '"]');
+		
+				if(target != null) {
+					scrollTo(target);
+				}
 			}
 		}
 	};

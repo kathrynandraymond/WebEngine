@@ -1,3 +1,6 @@
 var data = {
-	people: []
+	people: {
+		bridesmaids: [],
+		groomsmen: []
+	}
 };
