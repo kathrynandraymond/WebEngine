@@ -1,0 +1,63 @@
+div[package='Wedding.modules'].TravelInfo {
+	.first-three-width {
+		width: (@width-of-content * 0.31);
+	}
+
+	div.air-travel,div.accommodations,div.ground-transport {
+		float: left;
+		.first-three-width;
+		.prev {
+			.first-three-width;
+			height: 160px;
+		}
+		div.prev{
+			background-position: 0 50%;
+			background-size: cover;
+		}
+		div.info, div.info table tr td {
+			font-size: 10pt;
+		}
+		h3 {
+			font-family: @invitation-font;
+		}
+		h4 {
+			font-family: 10pt;
+		}
+	}
+	div.air-travel div.prev {
+		background-image: url('/img/paper-airplane.png');
+	}
+	div.accommodations div.prev {
+		background-image: url('/img/maple-tree-inn.jpg');
+	}
+	div.ground-transport div.prev {
+		background-image: url('/img/family-motorcycle.png');
+	}
+
+	div.accommodations {
+		margin: 0 (@width-of-content * 0.03);
+		table {
+			border: 1px solid @theme-color;
+			border-width: 1px 0 0 1px;
+			tr {
+				td {
+					border: 1px solid @theme-color;
+					border-width: 0 1px 1px 0;
+					padding: 2px;
+				}
+				td:nth-child(2) {
+					text-align: right;
+				}
+			}
+		}
+	}
+
+	div.things-to-do {
+		width: 100%;
+	}
+
+	div.clear {
+		.clearFloat;
+		height: 1px;
+	}
+}

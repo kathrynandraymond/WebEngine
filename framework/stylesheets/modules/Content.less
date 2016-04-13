@@ -1,8 +1,31 @@
 div.Content[package='Wedding.modules'] {
+	.portrait {
+		width: 100%;
+		height: 275px;
+		background-position: 0 50%;
+		background-size: cover;
+		background-image: url("../img/his_hers_original_scale.jpg");
+		background-repeat: no-repeat;
+		color: white;
 
+		div:nth-child(1) {
+			font-family: @default-title-font;
+			font-weight: 700;
+			font-size: 36px;
+			text-align: center;
+			padding-top: 100px;
+		}
+
+		div:nth-child(2) {
+			font-family: @invitation-font;
+			font-size: 20pt;
+			text-align: center;
+			padding: 0 20px;
+		}
+	}
 	div.widget {
 		width: 100%;
-		margin: 10px;
+		margin: 40px 0;
 		div[package='Wedding.widgets'].Countdown {
 			font-size: 30px;
 			height: 40px;
@@ -28,11 +51,9 @@ div.Content[package='Wedding.modules'] {
 					color: white;
 				}
 				div:nth-child(1) {
-					font-family: @invitation-font;
 					font-size: 24px;
 				}
 				div:nth-child(2) {
-					.default-body-font;
 					font-size: 8pt;
 				}
 			}
@@ -41,15 +62,16 @@ div.Content[package='Wedding.modules'] {
 				height: 50px;
 			}
 		}
-		margin-bottom: 35px;
+	}
+
+	div[package='Wedding.modules'] {
+		margin: 0 0 40px 0;
+		background-color: @sections-color;
 	}
 
 	div.widget:after {
 		.clearFloat;
 	}
-
-	width: 100%;
-
 	div.sections {
 		max-width: 90%;
 		min-width: 600px;
@@ -58,7 +80,6 @@ div.Content[package='Wedding.modules'] {
 		display: none;
 		background-color: white;
 		padding: 10px;
-		.rounded(5px);
 
 		> div {
 			display: none;

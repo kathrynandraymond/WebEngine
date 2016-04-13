@@ -27,8 +27,10 @@ Wedding.modules.TheWeddingParty = function() {
 		var bridesmaidsGallery = $(parentElement).find('.bridesmaids .gallery');
 		var groomsmenGallery = $(parentElement).find('.groomsmen .gallery');
 
-		loadGroupToGallery(people.bridesmaids, bridesmaidsGallery);
-		loadGroupToGallery(people.groomsmen, groomsmenGallery);
+		loadGroupToGallery(people.bridesmaids, bridesmaidsGallery,
+				$(parentElement).find('.cannotSeeThis .person[enlarged="false"].bridesmaids'));
+		loadGroupToGallery(people.groomsmen, groomsmenGallery,
+				$(parentElement).find('.cannotSeeThis .person[enlarged="false"].groomsmen'));
 
 		$('.gallery').click(function(event) {
 			var focusedPerson = $(event.target).parents('div.person');
@@ -76,8 +78,7 @@ Wedding.modules.TheWeddingParty = function() {
 		});
 	};
 
-	var loadGroupToGallery = function(group, galleryElement) {
-		var template = $(parentElement).find('.cannotSeeThis .person[enlarged="false"]');
+	var loadGroupToGallery = function(group, galleryElement, template) {
 		for(var i = 0, len = group.length; i < len; i++) {
 			var personInst = addPersonToTemplate(group[i], template);
 			if(Math.floor(Math.random() * 2) == 0) {
