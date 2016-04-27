@@ -3,6 +3,12 @@ div[package='Wedding.modules'].TravelInfo {
 		width: (@width-of-content * 0.31);
 	}
 
+	div {
+		div.seeMore {
+			display: hidden;
+		}
+	}
+
 	div.air-travel,div.accommodations,div.ground-transport {
 		float: left;
 		.first-three-width;
@@ -36,16 +42,19 @@ div[package='Wedding.modules'].TravelInfo {
 
 	div.accommodations {
 		margin: 0 (@width-of-content * 0.03);
-		table {
-			border: 1px solid @theme-color;
-			border-width: 1px 0 0 1px;
-			tr {
-				td {
-					border: 1px solid @theme-color;
-					border-width: 0 1px 1px 0;
-					padding: 2px;
+		.table {
+			width: 274px;
+			border-color: @theme-color;
+			.row {
+				.cell {
+					border-color: @theme-color;
+					padding: 3px;
 				}
-				td:nth-child(2) {
+				.cell:nth-child(1) {
+					width: 180px;
+				}
+				.cell:nth-child(2) {
+					width: 80px;
 					text-align: right;
 				}
 			}
@@ -54,6 +63,44 @@ div[package='Wedding.modules'].TravelInfo {
 
 	div.things-to-do {
 		width: 100%;
+		h3 {
+			font-family: @invitation-font;
+		}
+	}
+
+	div.topic {
+		.info {
+			max-height: 200px;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			.inner {
+			
+			}
+		}
+	}
+	div.topic {
+		a.seeMore, a.hideOverflow {
+			display: none;
+		}
+	}
+	div.topic.exempted {
+		.info {
+			max-height: none;
+		}
+		a.seeMore {
+			display: none;
+		}
+		a.hideOverflow {
+			display: block;
+		}
+	}
+	div.topic.overflown {
+		a.seeMore {
+			display: block;
+		}
+		a.hideOverflow {
+			display: none;
+		}
 	}
 
 	div.clear {
