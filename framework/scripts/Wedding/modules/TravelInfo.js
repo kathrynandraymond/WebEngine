@@ -31,6 +31,7 @@ Wedding.modules.TravelInfo = function() {
 				} else if($(e.target).hasClass('hideOverflow')) {
 					$(topic).removeClass('exempted').addClass('overflown');
 				}
+				return false;
 			});
 		}
     }
