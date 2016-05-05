@@ -1,6 +1,6 @@
 
 @theme-color: rgb(97,64,81);
-@body-color: white;
+@body-color: rgb(221, 219, 227);
 @sections-color: white;
 @invitation-font: 'Texgyrechorus', helvetica, arial, sans-serif;
 @default-title-font: 'Great Vibes', cursive;
@@ -8,13 +8,17 @@
 @width-of-page: 1050px;
 @width-of-content: 900px;
 
+@content-modules-padding: 11px;
+@content-modules-width: (@width-of-content - (2 * @content-modules-padding));
+
+
 @handlee-family {
 	font-family: 'Handlee', helvetica, arial, sans-serif;
 }
 
 .default-body-font {
 	font-family: 'PT Sans', helvetica, arial, sans-serif;
-	font-size: 12pt;
+	font-size: 11pt;
 }
 
 .default-section-titles {
@@ -37,6 +41,7 @@ body {
 		div[package='Wedding.modules'] {
 			h2 {
 				.default-section-titles;
+				margin: 0;
 			}
 		}
 
