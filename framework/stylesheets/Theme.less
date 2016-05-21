@@ -4,34 +4,20 @@
 /*@body-color: rgb(221, 219, 227);*/
 @body-color: white;
 @sections-color: white;
-@invitation-font: 'Texgyrechorus', helvetica, arial, sans-serif;
 @default-title-font: 'Great Vibes', cursive;
 
-@width-of-page: 1050px;
+@width-of-page: 100%;
 @width-of-content: 900px;
-.eclipse-gradient {
-	background-image: url('/img/assets/eclipse_gradient.png');
-	background-repeat: repeat-x;
+.themed-background {
+	background-color: RebeccaPurple;
 }
 
 @content-modules-padding: 11px;
 @content-modules-width: (@width-of-content - (2 * @content-modules-padding));
 
-
-@handlee-family {
-	font-family: 'Handlee', helvetica, arial, sans-serif;
-}
-
 .default-body-font {
 	font-family: 'PT Sans', helvetica, arial, sans-serif;
 	font-size: 11pt;
-}
-
-.default-section-titles {
-	font-family: @default-title-font;
-	font-size: 24pt;
-	color: @theme-color;
-	text-align: center;
 }
 
 body {
@@ -46,7 +32,9 @@ body {
 	
 		div[package='Wedding.modules'] {
 			h2 {
-				.default-section-titles;
+				font-family: @default-title-font;
+				font-size: 24pt;
+				text-align: center;
 				margin: 0;
 			}
 		}
