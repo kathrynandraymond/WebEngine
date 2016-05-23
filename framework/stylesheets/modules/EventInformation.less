@@ -4,9 +4,19 @@ div[package='Wedding.modules'].EventInformation {
 	}
 
 	.information {
+		.specifics {
+			margin-bottom: 10px;
+		}
 		div.specifics {
-			h3,h4 {
-				margin-bottom: 5px;
+			.location {
+				float: left;
+			}
+			.map {
+				float: right;
+			}
+
+			div:nth-child(3) {
+				.clearFloat;
 			}
 		}
 	}
