@@ -93,7 +93,12 @@ Wedding.modules.TheWeddingParty = function() {
 		var personInst = $(template).clone();
 		$(personInst).find('.name').html(person.name);
 		$(personInst).find('.role').html(person.type);
-		$(personInst).find('.about').html(person.about);
+		$(personInst).find('.about').empty();
+		for(var i = 0, len = person.about.length; i <len; i++) {
+			var p = $('<p/>');
+			$(p).html(person.about[i]).appendTo($(personInst).find('.about'));
+		}
+
 		var photoFrame = $(personInst).find('.photo');
 		if(person.hasOwnProperty('thumbnails') && person.thumbnails.length > 0) {
 			var thumbnail = 'img/people/thumbnails/' + person.thumbnails[person.thumbnails.length == 1 ?

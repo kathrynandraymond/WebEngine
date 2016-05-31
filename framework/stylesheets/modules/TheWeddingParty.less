@@ -9,12 +9,12 @@ div[package='Wedding.modules'].TheWeddingParty {
 		.gallery {
 			.person {
 				cursor: pointer;
-				width: 355px;
 				margin: 15px auto;
 				.name {
-					width: 150px;
+					width: (@width-of-content * 0.48 - 200);
 					float: left;
 					text-align: center;
+					line-height: 150px;
 				}
 				.photo {
 					float: left;
@@ -37,11 +37,13 @@ div[package='Wedding.modules'].TheWeddingParty {
 	}
 
 	.bridesmaids {
+		margin-right: (@width-of-content * 0.02);
 		.gallery {
-			text-align: right;
+			
 		}
 	}
 	.groomsmen {
+		margin-left: (@width-of-content * 0.02);
 		.gallery {
 		
 		}
@@ -94,14 +96,13 @@ div[package='Wedding.modules'].TheWeddingParty {
 					margin: 10px;
 				}
 				.name {
-					width: 100%;
 					font-size: 18pt;
 				}
 				.role {
 
 				}
 				.about {
-					width: 100%;
+
 				}
 			}
 		}
