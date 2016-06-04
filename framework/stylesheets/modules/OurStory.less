@@ -2,25 +2,35 @@ div.OurStory[package='Wedding.modules'] {
 	width: 100%;
 
 	.story {
+		width: @width-of-content;
 		h2 {
 
 		}
-
-		p {
-		
-		}
-		.story-version {
-			float: left;
-			width: (@width-of-content * 0.48);
-			p {
-				font-size: 12px;
+		.chapter {
+			width: @width-of-content;
+			h5 {
+				margin: 10 auto;
+				font-size: 17px;
+				font-weight: bold;
+				text-align: center;
 			}
-		}
-		.story-version.kathryn {
-			margin-right: (@width-of-content * 0.02);
-		}
-		.story-version.raymond {
-			margin-left: (@width-of-content * 0.02);
+			font-size: 10pt;
+			div {
+				float: left;
+				width: (@width-of-content * 0.48);
+				.who {
+					font-weight: bold;
+				}
+				p {
+					font-style: italic;
+				}
+			}
+			.kathryn {
+				margin-right: (@width-of-content * 0.02);
+			}
+			.raymond {
+				margin-left: (@width-of-content * 0.02);
+			}
 		}
 	}
 }
