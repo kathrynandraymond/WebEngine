@@ -34,7 +34,7 @@ Wedding.modules.Header = function() {
 	var clickSections = function(event) {
 		var scrollTo = function(target) {
 			$('html,body').animate({
-				 scrollTop: $(target).offset().top - $('.Header').height()
+				 scrollTop: $(target).offset().top - $('.Header').height() - 20
 			});
 		};
 
