@@ -41,7 +41,7 @@ Wedding.modules.Header = function() {
 		if($(event.target).html() == "Home") {
 			scrollTo($('.website'));
 		} else {
-			var reference = $(event.target).attr('ref');
+			var reference = $(event.target).parents('li').attr('ref');
 	
 			if(reference != null) {
 				var target = $('div[package="Wedding.modules"].Content').find('div[anchor="' + reference + '"]');
