@@ -14,7 +14,7 @@ var PageModal = function() {
 		var modalContainer = $('.pageModal.containing-box').find('.container');
 		$(content).appendTo(modalContainer);
 		if(automaticallyShow === true) {
-			showModal();
+			that.showModal();
 		}
 	};
 	
