@@ -10,15 +10,20 @@ div.Content[package='Wedding.modules'] {
 
 		div.slider {
 			z-index: 0;
+			width: @width-of-content;
 			height: 325px;
 			margin-left: 0;
+			position: relative;
 
 			div.slide {
-				float: left;
 				width: @width-of-content;
 				height: 325px;
 				background-repeat: no-repeat;
 				background-size: cover;
+				position: absolute;
+				opacity: 0;
+				top: 0;
+				left: 0;
 			}
 
 			.rocky_mountain_natl_park {
