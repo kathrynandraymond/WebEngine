@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Kathryn and Raymond's Wedding</title>
+<script type="text/javascript" src="scripts/project.js"></script>
+
+<!-- 
+Google form link: http://goo.gl/forms/u6c4v1Ta60yXqUC23
+ -->
+
+<script type="text/javascript">
+var autoCompleteLastName = function()
+var formSubmit = function(form) {
+	var lastName = $(form).find('input[name="lastName"]').val();
+	var firstName = $(form).find('input[name="firstName"]').val();
+
+	$(location).attr('href', 'mailto:raymondschan@gmail.com?cc=kathryn.wc.ng@gmail.com?' +
+			'subject=' + encodeURIComponent("This is a test email") +
+            '&body=' + encodeURIComponent(firstName + ' ' + lastName + ' has completed the survey.'));
+};
+</script>
+
+</head>
+<body>
+
+<a href="http://goo.gl/forms/u6c4v1Ta60yXqUC23">RSVP</a>
+<form method="POST" action="rsvp.html">
+	<table>
+		<tr>
+			<td>
+				<div>Last Name</div>
+				<div><input type="text" name="lastName"></input></div>
+			</td>
+			<td>
+				<div>First Name</div>
+				<div><input type="text" name="firstName"></input></div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" value="RSVP" onClick="formSubmit(this.form); "></input>
+			</td>
+		</tr>
+</form>
+</body>
+</html>

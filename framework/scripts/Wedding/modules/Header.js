@@ -38,18 +38,21 @@ Wedding.modules.Header = function() {
 			});
 		};
 
-		if($(event.target).html() == "Home") {
-			scrollTo($('.website'));
-		} else {
-			var reference = $(event.target).parents('li').attr('ref');
-	
-			if(reference != null) {
-				var target = $('div[package="Wedding.modules"].Content').find('div[anchor="' + reference + '"]');
+		var itemVal = $.trim($(event.target).html());
+		switch(itemVal) {
+			case 'Home':
+				scrollTo($('.website'));
+				break;
+			default:
+				var reference = $(event.target).parents('li').attr('ref');
 		
-				if(target != null) {
-					scrollTo(target);
+				if(reference != null) {
+					var target = $('div[package="Wedding.modules"].Content').find('div[anchor="' + reference + '"]');
+			
+					if(target != null) {
+						scrollTo(target);
+					}
 				}
-			}
 		}
 	};
 };
