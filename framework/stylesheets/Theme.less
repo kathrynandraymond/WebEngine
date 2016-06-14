@@ -69,6 +69,20 @@ body {
 	.table:after {
 		.clearFloat;
 	}
+
+	div.button {
+		background-color: @theme-color;
+		.themed-background;
+		padding: 5px;
+		.rounded(5px);
+		color: white;
+		display: inline-block;
+	}
+
+	div.button:hover {
+		cursor: pointer;
+		border: 1px solid white;
+	}
 }
 
 a:link,.lookLikeALink {

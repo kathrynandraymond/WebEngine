@@ -9,16 +9,12 @@ Wedding.modules.TheWeddingParty = function() {
 
 	var findPersonByName = function(name) {
 		var i, len;
-		for(i = 0, len = people.bridesmaids.length; i < len; i++) {
-			if(people.bridesmaids[i].name == name) {
-				return people.bridesmaids[i];
+		for(i = 0, len = people.length; i < len; i++) {
+			if(people[i].name == name) {
+				return people[i];
 			}
 		}
-		for(i = 0, len = people.groomsmen.length; i < len; i++) {
-			if(people.groomsmen[i].name == name) {
-				return people.groomsmen[i];
-			}
-		}
+
 		return null;
 	};
 
@@ -27,17 +23,14 @@ Wedding.modules.TheWeddingParty = function() {
 		var bridesmaidsGallery = $(parentElement).find('.bridesmaids .gallery');
 		var groomsmenGallery = $(parentElement).find('.groomsmen .gallery');
 
-		loadGroupToGallery(people.bridesmaids, bridesmaidsGallery,
-				$(parentElement).find('.cannotSeeThis .person[enlarged="false"].bridesmaids'));
-		loadGroupToGallery(people.groomsmen, groomsmenGallery,
-				$(parentElement).find('.cannotSeeThis .person[enlarged="false"].groomsmen'));
+		loadGroupToGallery($(parentElement).find('.cannotSeeThis .person[enlarged="false"]'));
 
 		$('.gallery').click(function(event) {
 			var focusedPerson = $(event.target).parents('div.person');
 			if(focusedPerson != null && focusedPerson.length > 0) {
 				var person = findPersonByName($(focusedPerson).find('.name').html());
 				pageModal.emptyModal();
-				var enlargedPerson = addPersonToTemplate(person, $('.cannotSeeThis .person[enlarged="true"]'));
+				var enlargedPerson = createPersonObj(person, $('.cannotSeeThis .person[enlarged="true"]'));
 				pageModal.loadIntoModal($(enlargedPerson), false);
 
 				var pictureFrame = $(enlargedPerson).find('.photo');
@@ -78,18 +71,18 @@ Wedding.modules.TheWeddingParty = function() {
 		});
 	};
 
-	var loadGroupToGallery = function(group, galleryElement, template) {
-		for(var i = 0, len = group.length; i < len; i++) {
-			var personInst = addPersonToTemplate(group[i], template);
-			if(Math.floor(Math.random() * 2) == 0) {
-				$(personInst).appendTo(galleryElement);
-			} else {
-				$(personInst).prependTo(galleryElement);
+	var loadGroupToGallery = function(template) {
+		for(var i = 0, len = data.people.length; i < len; i++) {
+			var person = data.people[i];
+			var placeholder = $('.gallery .person[name="' + person.name + '"]');
+			if(placeholder != null) {
+				var personInst = createPersonObj(person, template);
+				$(placeholder).html($(personInst).html());
 			}
 		}
 	};
 
-	var addPersonToTemplate = function(person, template) {
+	var createPersonObj = function(person, template) {
 		var personInst = $(template).clone();
 		$(personInst).find('.name').html(person.name);
 		$(personInst).find('.role').html(person.type);

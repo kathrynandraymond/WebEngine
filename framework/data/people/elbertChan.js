@@ -1,4 +1,4 @@
-data.people.groomsmen.push({
+data.people.push({
 	"name": "Elbert Chan",
 	"type":"Groomsman",
 	"thumbnails":[

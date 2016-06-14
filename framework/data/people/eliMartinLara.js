@@ -1,4 +1,4 @@
-data.people.groomsmen.push({
+data.people.push({
 	"name": "Eli Martin Lara",
 	"type":"Best Man",
 	"thumbnails":[

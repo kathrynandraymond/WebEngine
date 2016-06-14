@@ -1,6 +1,8 @@
 div[package='Wedding.modules'].TheWeddingParty {
+	@group-margin: 15px;
+
 	.bridesmaids,.groomsmen {
-		width: (@width-of-content * 0.48);
+		width: (@width-of-content / 2);
 		float: left;
 		.group {
 			font-size: 20pt;
@@ -18,17 +20,15 @@ div[package='Wedding.modules'].TheWeddingParty {
 			.person {
 				cursor: pointer;
 				.lookLikeALink;
-				margin: 15px auto;
+				margin: 30px auto;
 				.name {
-					width: (@width-of-content * 0.48 - 200);
-					float: left;
 					text-align: center;
-					line-height: 150px;
 				}
 				.photo {
-					float: left;
 					width: 200px;
 					height: 200px;
+					margin: 0 auto;
+					border-radius: 50%;
 					img {
 						display: none;
 					}
@@ -39,22 +39,7 @@ div[package='Wedding.modules'].TheWeddingParty {
 				.about {
 					display: none;
 				}
-				margin: 5px;
-				padding: 3px;
 			}
-		}
-	}
-
-	.bridesmaids {
-		margin-right: (@width-of-content * 0.02);
-		.gallery {
-			
-		}
-	}
-	.groomsmen {
-		margin-left: (@width-of-content * 0.02);
-		.gallery {
-		
 		}
 	}
 
@@ -83,7 +68,6 @@ div[package='Wedding.modules'].TheWeddingParty {
 .pageModal.containing-box {
 	background-color: white;
 	.container {
-		padding: 5px;
 		.person {
 			.photo {
 				float: left;
@@ -91,7 +75,7 @@ div[package='Wedding.modules'].TheWeddingParty {
 				min-height: 200px;
 				max-width: 500px;
 				max-height: 500px;
-				margin: 10px;
+				margin: 0;
 				img.show {
 					display: inline;
 				}
