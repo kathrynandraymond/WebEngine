@@ -27,3 +27,9 @@ $(document).ready(function() {
 	objectInitializer($('body'));
 });
 
+var scrollToTarget = function(target) {
+	$('html,body').animate({
+		 scrollTop: $(target).offset().top - $('.Header').height() - 20
+	});
+};
+

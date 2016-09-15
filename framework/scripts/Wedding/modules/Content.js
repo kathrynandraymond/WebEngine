@@ -78,6 +78,38 @@ Wedding.modules.Content = function() {
 		});
 	};
 
+	var renderImportantMessages = function() {
+		var importantMessages = $(placeHolder).find('.important-messages .message');
+		var rightNow = new Date();
+		var numMessages = 0;
+		if(importantMessages.length > 0) {
+			for(var i = 0, len = importantMessages.length; i < len; i++) {
+				var before = -1, after = -1;
+				var timestampBeforeStr = $(importantMessages[i]).attr('before');
+				var timestampAfterStr = $(importantMessages[i]).attr('after');
+				if($.trim(timestampBeforeStr).length > 0) {
+					eval('before = ' + timestampBeforeStr);
+				}
+				if($.trim(timestampAfterStr).length > 0) {
+					eval('after = ' + timestampAfterStr);
+				}
+				if( (before < 0 || (rightNow.getTime() <= before)) && (after < 0 || (rightNow.getTime() >= after)) ) {
+					$(importantMessages[i]).show();
+					$('<button/>').html('X').addClass('message-exit').appendTo($(importantMessages[i]));
+					numMessages++;
+				} else {
+					$(importantMessages[i]).hide();
+				}
+			}
+		}
+
+		if (numMessages > 0) {
+			$('button.message-exit').click(function(e) {
+				$(e.target).parent().hide();
+			});
+		}
+	};
+
 	this.init = function(parentElement) {
 		placeHolder = parentElement;
 		var portrait = $(parentElement).find('.portrait');
@@ -94,6 +126,8 @@ Wedding.modules.Content = function() {
 			activateAutoSlide();
 			activateManualSlideNavigation();
 		}
+
+		renderImportantMessages();
 	};
 };
 

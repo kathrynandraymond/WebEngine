@@ -2,6 +2,40 @@
 /********************* Portrait backgrounds ******************************/
 
 div.Content[package='Wedding.modules'] {
+
+	.important-messages {
+		.message {
+			width: 100%;
+			padding: 10px;
+			font-size: 12px;
+			border: 1px solid red;
+			border-radius: 10px;
+			background-color: pink;
+			position: relative;
+
+			button.message-exit {
+				.themed-background;
+				border: 2px solid #fff;
+				border-radius: 30px;
+				-webkit-box-shadow: 0 0 8px #000;
+				box-shadow: 0 0 8px #000;
+				color: #fff;
+				display: block;
+				font-size: 18px;
+				font-weight: 400;
+				line-height: 22px;
+				opacity: 1;
+				padding: 2px 6px;
+				position: absolute;
+				text-decoration: none;
+				top: -15px;
+				right: -15px;
+				z-index: 402;
+				cursor: pointer;
+			}
+		}
+	}
+
 	.portrait {
 		width: @width-of-content;
 		height: 325px;
